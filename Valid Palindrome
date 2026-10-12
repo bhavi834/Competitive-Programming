@@ -1,0 +1,51 @@
+
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        int left = 0;
+        int right = s.length() - 1;
+
+        while (left < right) {
+            // Skip non-alphanumeric characters
+            while (left < right &&
+                   !isalnum(static_cast<unsigned char>(s[left]))) {
+                left++;
+            }
+
+            while (left < right &&
+                   !isalnum(static_cast<unsigned char>(s[right]))) {
+                right--;
+            }
+
+            // Compare characters without case sensitivity
+            if (tolower(static_cast<unsigned char>(s[left])) !=
+                tolower(static_cast<unsigned char>(s[right]))) {
+                return false;
+            }
+
+            left++;
+            right--;
+        }
+
+        return true;
+    }
+};
+
+int main() {
+    string s = "A man, a plan, a canal: Panama";
+
+    Solution solution;
+
+    if (solution.isPalindrome(s)) {
+        cout << "It is a palindrome." << endl;
+    } else {
+        cout << "It is not a palindrome." << endl;
+    }
+
+    return 0;
+}
