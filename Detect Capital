@@ -1,0 +1,39 @@
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Solution {
+public:
+    bool detectCapitalUse(string word) {
+        int upperCount = 0;
+
+        for (char c : word) {
+            if (c >= 'A' && c <= 'Z') {
+                upperCount++;
+            }
+        }
+
+        if (upperCount == 0 || upperCount == word.length()) {
+            return true;
+        }
+
+        if (upperCount == 1 && word[0] >= 'A'
+                           && word[0] <= 'Z') {
+            return true;
+        }
+
+        return false;
+    }
+};
+
+int main() {
+    string word = "Google";
+
+    Solution s;
+
+    cout << (s.detectCapitalUse(word) ? "true" : "false")
+         << endl;
+
+    return 0;
+}
