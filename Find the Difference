@@ -1,0 +1,35 @@
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Solution {
+public:
+    char findTheDifference(string s, string t) {
+        char result = 0;
+
+        for (char c : s) {
+            result ^= c;
+        }
+
+        for (char c : t) {
+            result ^= c;
+        }
+
+        return result;
+    }
+};
+
+int main() {
+    string s = "abcd";
+    string t = "abcde";
+
+    Solution solution;
+
+    cout << "Extra Character: "
+         << solution.findTheDifference(s, t)
+         << endl;
+
+    return 0;
+}
+
