@@ -1,0 +1,44 @@
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Solution {
+public:
+    bool isIsomorphic(string s, string t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+
+        int mapS[256] = {0};
+        int mapT[256] = {0};
+
+        for (int i = 0; i < s.length(); i++) {
+            unsigned char a = s[i];
+            unsigned char b = t[i];
+
+            if (mapS[a] != mapT[b]) {
+                return false;
+            }
+
+            mapS[a] = i + 1;
+            mapT[b] = i + 1;
+        }
+
+        return true;
+    }
+};
+
+int main() {
+    string s = "egg";
+    string t = "add";
+
+    Solution solution;
+
+    cout << (solution.isIsomorphic(s, t)
+                 ? "true"
+                 : "false")
+         << endl;
+
+    return 0;
+}
