@@ -1,0 +1,28 @@
+
+#include <iostream>
+using namespace std;
+
+class Solution {
+public:
+    bool isPowerOfTwo(int n) {
+        if (n <= 0) {
+            return false;
+        }
+
+        return (n & (n - 1)) == 0;
+    }
+};
+
+int main() {
+    int n = 16;
+
+    Solution s;
+
+    if (s.isPowerOfTwo(n)) {
+        cout << "true" << endl;
+    } else {
+        cout << "false" << endl;
+    }
+
+    return 0;
+}
