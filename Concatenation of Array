@@ -1,0 +1,29 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> getConcatenation(vector<int>& nums) {
+        vector<int> ans = nums;
+
+        for (int x : nums) {
+            ans.push_back(x);
+        }
+
+        return ans;
+    }
+};
+
+int main() {
+    Solution s;
+    vector<int> nums = {1, 2, 1};
+
+    vector<int> result = s.getConcatenation(nums);
+
+    for (int x : result) {
+        cout << x << " ";
+    }
+
+    return 0;
+}
