@@ -1,0 +1,43 @@
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> sortedSquares(vector<int>& nums) {
+        vector<int> result(nums.size());
+
+        int left = 0;
+        int right = nums.size() - 1;
+        int pos = nums.size() - 1;
+
+        while (left <= right) {
+            int a = nums[left] * nums[left];
+            int b = nums[right] * nums[right];
+
+            if (a > b) {
+                result[pos--] = a;
+                left++;
+            } else {
+                result[pos--] = b;
+                right--;
+            }
+        }
+
+        return result;
+    }
+};
+
+int main() {
+    Solution s;
+    vector<int> nums = {-4, -1, 0, 3, 10};
+
+    vector<int> ans = s.sortedSquares(nums);
+
+    for (int x : ans)
+        cout << x << " ";
+
+    return 0;
+}
